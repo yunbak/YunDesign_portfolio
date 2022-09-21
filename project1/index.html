@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qone</title>
+    <link href="css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./slick/slick.css">
+  <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="js/min/jquery-v1.10.2.min.js" type="text/javascript"></script>
+    <script src="js/min/jquery-finger-v0.1.0.min.js" type="text/javascript"></script>
+    <script>
+        var j220 = jQuery.noConflict();
+        j220(document).ready(function () {
+
+            j220('.flicker-example').flicker();
+        });
+
+    </script>
+    <script src="scripts.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            mobile_menu();
+        });
+
+        function mobile_menu() {
+            /* 변수 선언 */
+            var $menu = null;
+            var $left_gnb = null; // 영역 전체
+            var $depth1_wrap = null;
+            var $depth1 = null;
+            var $depth1_btn = null;
+
+            /* 시작 함수 */
+            function start() {
+                init();
+                init_event();
+            }
+            /* 변수 초기화 함수 */
+            function init() {
+                $menu = $('.menu_icon');
+                $left_gnb = $('.left_gnbWrap'); // 영역 전체
+                $depth1_wrap = $('.left_gnb>li');
+                $depth1 = $depth1_wrap.children('ul');
+                $depth1_btn = $depth1_wrap.children('a');
+            }
+            /* 이벤트 함수 */
+            function init_event() {
+
+                /* 모바일 메뉴 버튼 클릭했을때 모바일 메뉴영역 나오게 하기 */
+                $menu.click(function (event) {
+                    event.preventDefault();
+                    $left_gnb.addClass('on');
+                });
+
+                /* x버튼 눌렀을때 모바일 메뉴 닫기 */
+                $('.close').click(function (event) {
+                    event.preventDefault();
+
+                    $left_gnb.removeClass('on');
+
+                    // x버튼 누르면 시간차 약간두고 소메뉴 닫히게 하기
+                    setTimeout(function () {
+                        $depth1_btn.removeClass('on');
+                        $depth1.slideUp();
+                    }, 300)
+                });
+
+                /* depth1의 각메뉴 클릭시 depth2 나오게 하기 */
+                $depth1_btn.click(function (event) {
+                    event.preventDefault();
+                    var $this = $(this);
+                    var $this_ul = $this.siblings('ul');
+
+                    var check = $this.hasClass('on');
+                    if (check) {
+                        $this.removeClass('on');
+                        $this_ul.stop(true, true).slideUp();
+                    } else {
+                        $depth1_btn.removeClass('on');
+                        $depth1.stop().slideUp();
+                        $this.addClass('on');
+                        $this_ul.stop(true, true).slideDown();
+                    }
+                });
+
+                /* 디바이스 크기 변경시 모바일 메뉴영역 숨기기 */
+                $(window).resize(function () {
+                    $left_gnb.removeClass('on');
+                });
+            }
+
+            start(); // 시작 호출
+        }
+    </script>
+
+    <style type="text/css">
+        /*-------------------모바일 메뉴----------------------*/
+
+        /* 모바일 메뉴 버튼 */
+        .menu_icon {
+            position: absolute;
+            top: 0;
+            left: 5%
+        }
+
+        .menu_icon>a {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        a.close {
+            background-color: #fff;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #fff;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        a.close>img {
+            width: 20%;
+            top: 40%;
+            left: 30%;
+            position: absolute;
+        }
+
+        .left_gnbWrap {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            right: -100%;
+            top: 0;
+            padding-top: 100px;
+            z-index: 999;
+            transition: all 0.3s;
+        }
+
+        .left_gnbWrap.on {
+            left: 0;
+        }
+
+        .left_gnb>li {
+            width: 100%;
+        }
+
+        .left_gnb>li>a {
+            font-size: 18px;
+            display: block;
+            text-align: center;
+            line-height: 70px;
+            width: 100%;
+            height: 70px;
+            background-color: #1e56a0;
+            color: #fff;
+        }
+
+        .left_gnb>li>a.on {
+            background-color: #1e56a0;
+        }
+
+        .left_gnb>li>ul {
+            display: none;
+        }
+
+        .left_gnb>li>ul>li>a {
+            display: block;
+            text-align: center;
+            line-height: 70px;
+            width: 100%;
+            height: 70px;
+            background-color: #fff;
+            color: black;
+            font-size: 15px;
+        }
+
+        .left_gnb>li>a>span>img {
+            width: 2%;
+            position: absolute;
+            right: 5%;
+            padding-top: 25px;
+        }
+    </style>
+    <!-- box4 이미지슬라이드 -->
+    <style type="text/css">
+        html, body {
+          margin: 0;
+          padding: 0;
+        }
+    
+        * {
+          box-sizing: border-box;
+        }
+    
+        .slider {
+            width: 100%;
+            margin: 100px auto;
+        }
+    
+        .slick-slide {
+          margin: 0px 20px;
+        }
+    
+        .slick-slide img {
+          width: 100%;
+          padding-top: 215px;
+          padding-bottom: 100px;
+        }
+    
+        .slick-prev:before,
+        .slick-next:before {
+          color: black;
+        }
+    
+    
+        .slick-slide {
+          transition: all ease-in-out .3s;
+          opacity: .2;
+        }
+        
+        .slick-active {
+          opacity: .5;
+        }
+    
+        .slick-current {
+          opacity: 1;
+        }
+        .slick-dots{display: none;}
+
+
+
+      </style>
+
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div class="h_top">
+                <div class="inner">
+                    <div class="menu_icon"><img src="img/menu.png"></div>
+                    <nav class="left_gnbWrap">
+                        <a href="#" class="close"><img src="img/X.png"></a>
+                        <ul class="left_gnb">
+                            <li>
+                                <a href="sub1.html">브랜드<span><img src="img/+.png"></span></a>
+                                <ul>
+                                    <li><a href="sub1.html">브랜드 스토리</a></li>
+                                    <li><a href="sub1.html">브랜드 소개</a></li>
+                                    <li><a href="sub1.html">브랜드 히스토리</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="sub2.html">제품<span><img src="img/+.png"></span></a>
+                                <ul>
+                                    <li><a href="sub2.html">제품 전체보기</a></li>
+                                    <li><a href="sub2.html">트루스위트</a></li>
+                                    <li><a href="sub2.html">홈메이드</a></li>
+                                    <li><a href="sub2.html">상쾌환</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="sub3.html">레시피<span><img src="img/+.png"></span></a>
+                                <ul>
+                                    <li><a href="sub3.html">레시피 전체보기</a></li>
+                                    <li><a href="sub3.html">큐원 셀렉션</a></li>
+                                    <li><a href="sub3.html">온라인 쿠킹 세미나</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="sub4.html">홍보센터<span><img src="img/+.png"></span></a>
+                                <ul>
+                                    <li><a href="sub4.html">큐원 tv 광고</a></li>
+                                    <li><a href="sub4.html">큐원 뉴스</a></li>
+                                    <li><a href="sub4.html">투자정보</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="sub5.html">고객서비스<span><img src="img/+.png"></span></a>
+                                <ul>
+                                    <li><a href="sub5.html">자주 묻는 질문</a></li>
+                                    <li><a href="sub5.html">고객 한마디</a></li>
+                                    <li><a href="sub5.html">찾아오시는 길</a></li>
+                                    <li><a href="sub5.html">공장 견학</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="logo"><img src="img/logo.png"></div>
+                    <div class="icon">
+                        <div class="icon_l"><img src="img/h_1.png"></div>
+                        <div class="icon_r"><img src="img/h_2.jpg"></div>
+                        <!-- 초기화 -->
+                    </div>
+                    <!-- 초기화 -->
+                </div>
+            </div>
+            <div class="h_bottom">
+                <ul class="menu">
+                    <li><a href="sub1.html">브랜드</a></li>
+                    <li><a href="sub2.html">제품</a></li>
+                    <li><a href="sub3.html">레시피</a></li>
+                    <li><a href="sub4.html">홍보센터</a></li>
+                    <li><a href="sub5.html">고객서비스</a></li>
+                    <div class="submenu">
+                        <ul>
+                            <li><a href="sub1.html">브랜드 스토리</a></li>
+                            <li><a href="sub1.html">브랜드 소개</a></li>
+                            <li><a href="sub1.html">브랜드 히스토리</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="sub2.html">제품 전체보기</a></li>
+                            <li><a href="sub2.html">트루스위트</a></li>
+                            <li><a href="sub2.html">홈메이드</a></li>
+                            <li><a href="sub2.html">상쾌환</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="sub3.html">레시피 전체보기</a></li>
+                            <li><a href="sub3.html">큐원 셀렉션</a></li>
+                            <li><a href="sub3.html">온라인 쿠킹 세미나</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="sub4.html">큐원 tv 광고</a></li>
+                            <li><a href="sub4.html">큐원 뉴스</a></li>
+                            <li><a href="sub4.html">투자정보</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="sub5.html">자주 묻는 질문</a></li>
+                            <li><a href="sub5.html">고객 한마디</a></li>
+                            <li><a href="sub5.html">찾아오시는 길</a></li>
+                            <li><a href="sub5.html">공장 견학</a></li>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div class="flicker-example" data-block-text="false">
+            <ul>
+                <li>
+                </li>
+
+                <li>
+                </li>
+
+                <li>
+                </li>
+            </ul>
+        </div>
+        <div id="contents">
+            <div class="box1">
+                <div class="inner">
+                    <div class="box1_1">
+                        <p>큐원<br><span>트루스위트</span></p>
+                        <div></div>
+                    </div>
+                    <div class="box1_2">
+                        <p>큐원<br><span>홈메이드</span></p>
+                        <div></div>
+                    </div>
+                    <div class="box1_3">
+                        <p>큐원<br><span>상쾌환</span></p>
+                        <div></div>
+                    </div>
+                    <div class="box1_4">
+                        <p>온라인몰<br><span>바로가기</span></p>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="box2">
+                <div class="inner">
+                    <div class="box2_1">
+                        <h3>이벤트</h3>
+                        <div class="slideshow">
+                            <img src="img/box2_1.jpg">
+                            <img src="img/slide1.jpg" class="alt">
+                            <img src="img/slide2.jpg" class="alt">
+                        </div>
+                    </div>
+                    <div class="box2_2">
+                        <h3>신제품</h3>
+                        <div>
+                            
+                            <div class="box2_img">
+                                <div class="box2_l">
+                                    <img src="img/mix.png">
+                                </div>
+                                <div class="box2_r">
+                                    <img src="img/churos.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box3">
+                
+                <div class="inner">
+                    <div class="con3_text">
+                        <h2>큐원 인기상품</h2>
+                        <p>큐원의 인기상품들을 소개합니다.</p>
+                    </div>
+                    <ul class="box3_img">
+                        <li>
+                            <img src="img/box3_1.jpg">
+                            <h5>하얀설탕(가정용)</h5>
+                            <p>제품>설탕/액상당</p>
+                        </li>
+                        <li>
+                            <img src="img/box3_2.jpg">
+                            <h5>상쾌환</h5>
+                            <p>제품>숙취해소제품</p>
+                        </li>
+                        <li>
+                            <img src="img/box3_3.jpg">
+                            <h5>바삭한 튀김가루</h5>
+                            <p>제품>프리믹스</p>
+                        </li>
+                        <li>
+                            <img src="img/box3_4.jpg">
+                            <h5>알룰로오스</h5>
+                            <p>제품>설탕/액상당</p>
+                        </li>
+                        <li>
+                            <img src="img/box3_5.jpg">
+                            <h5>팬케익믹스</h5>
+                            <p>제품>홈메이드믹스</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="box4">
+                <div class="inner">
+                    <div class="con4_text">
+                        <h2>Q.one Recipe</h2>
+                        <p>재미있고 유익한 레시피로 가득합니다.</p>
+                    </div>
+                    
+                    <section class="center slider">
+                        <div>
+                          <img src="img/box4_1.png">
+                        </div>
+                        <div>
+                          <img src="img/box4_2.png">
+                        </div>
+                        <div>
+                          <img src="img/box4_3.png">
+                        </div>
+                        <div>
+                          <img src="img/box4_4.png">
+                        </div>
+                        <div>
+                          <img src="img/box4_5.png">
+                        </div>
+                        <div>
+                            <img src="img/box4_1.png">
+                          </div>
+                          <div>
+                            <img src="img/box4_2.png">
+                          </div>
+                          <div>
+                            <img src="img/box4_3.png">
+                          </div>
+                          <div>
+                            <img src="img/box4_4.png">
+                          </div>
+                      </section>
+                    
+
+                </div>
+            </div>
+            <div class="box5">
+                <div class="inner">
+                    <div class="con5_text">
+                        <h2>큐원 SNS</h2>
+                        <p>소셜미디어를 통해 보는 큐원을 소개합니다.</p>
+                    </div>
+                    <div class="box5_sns">
+                        <div>
+                            <p>FACEBOOK</p>
+                        </div>
+                        <div>
+                            <p>INSTAGRAM</p>
+                        </div>
+                        <div>
+                            <p>BLOG</p>
+                        </div>
+                    </div>
+                    <ul class="box5_img">
+                        <li><img src="img/box5_1.jpg"></li>
+                        <li><img src="img/box5_2.jpg"></li>
+                        <li><img src="img/box5_3.jpg"></li>
+                        <li><img src="img/box5_4.jpg"></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+
+            <div class="f_top">
+                <div class="inner">
+                    <ul class="f_menu">
+                        <li>개인정보처리방침</li>
+                        <li>고객상담</li>
+                        <li>찾아오시는길</li>
+                        <li>온라인몰</li>
+                    </ul>
+                    <ul class="f_sns">
+                        <li><img src="img/insta.png"></li>
+                        <li><img src="img/blog.png"></li>
+                        <li><img src="img/face.png"></li>
+                        <li><img src="img/youtube.png"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="f_bottom">
+                <div class="inner">
+                    <div class="f_logo"><img src="img/f_logo.png"></div>
+                    <div class="copyright">
+                        <p>(주) 삼양사 :경기도 성남시 분당구 판교로 295 |<br>
+                            일반문의 : 02-2157-9114 | 제품/상품 관련 문의 : 080-023-3399</p>
+                        <p>COPYRIGHT 2018 SAMYANG CORP, ALL RIGHTS RESERVED</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+  <script src="./slick/slick.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(document).on('ready', function() {
+      
+      $(".center").slick({
+        dots: true,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 5,
+        slidesToScroll: 3
+      });
+      
+    });
+</script>
+</body>
+
+</html>

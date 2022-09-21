@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>와이즈캠프sub</title>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    mobile_menu();
+});
+
+function mobile_menu(){
+    /* 변수 선언 */
+    var $menu = null;
+    var $left_gnb = null; // 영역 전체
+    var $depth1_wrap = null;
+    var $depth1 = null;
+    var $depth1_btn = null;
+    
+    /* 시작 함수 */
+    function start(){
+        init();
+        init_event();
+    }
+    /* 변수 초기화 함수 */
+    function init(){
+        $menu = $('.menu');
+        $left_gnb = $('.left_gnbWrap'); // 영역 전체
+        $depth1_wrap = $('.left_gnb>li');
+        $depth1 = $depth1_wrap.children('ul');
+        $depth1_btn = $depth1_wrap.children('a');
+    }
+    /* 이벤트 함수 */
+    function init_event(){
+        
+        /* 모바일 메뉴 버튼 클릭했을때 모바일 메뉴영역 나오게 하기 */
+        $menu.click(function(event){
+            event.preventDefault();
+            $left_gnb.addClass('on');
+        });
+        
+        /* x버튼 눌렀을때 모바일 메뉴 닫기 */
+        $('.close').click(function(event){
+            event.preventDefault();
+
+            $left_gnb.removeClass('on');
+            
+            // x버튼 누르면 시간차 약간두고 소메뉴 닫히게 하기
+            setTimeout(function(){
+                $depth1_btn.removeClass('on');
+                $depth1.slideUp();
+            },300)
+        });
+        
+        /* depth1의 각메뉴 클릭시 depth2 나오게 하기 */
+        $depth1_btn.click(function(event){
+            event.preventDefault();
+            var $this = $(this);
+            var $this_ul = $this.siblings('ul');
+
+            var check = $this.hasClass('on');
+            if(check){
+                $this.removeClass('on');
+                $this_ul.stop(true,true).slideUp();
+            }else{
+                $depth1_btn.removeClass('on');
+                $depth1.stop().slideUp();
+                $this.addClass('on');
+                $this_ul.stop(true,true).slideDown();
+            }
+        });
+        
+        /* 디바이스 크기 변경시 모바일 메뉴영역 숨기기 */
+        $(window).resize(function(){
+            $left_gnb.removeClass('on');
+        });
+    }
+    
+    start(); // 시작 호출
+}
+</script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div class="header_l"><img src="img/soobak.jpg"></div>
+            <div class="logo"><a href="index.html"><img src="img/logo.jpg"></a></div>
+            <div class="header_r">
+                <div>선생님 모집</div>
+                <div>고객센터</div>
+                <!--  -->
+                <div class="menu">
+                    <a href="#">MENU</a>
+                  </div>
+                  <nav class="left_gnbWrap">
+                              <a href="#" class="close"><img src="img/wrong1.png"></a>
+                              <ul class="left_gnb">
+                                  <li>
+                                      <a href="#">와이즈캠프 소개</a>
+                                      <ul>
+                                          <li><a href="#">와이즈캠프란?</a></li>
+                                          <li><a href="#">와이즈캠프 특징</a></li>
+                                          <li><a href="#">상품구성</a></li>
+                                          <li><a href="#">학습관리</a></li>
+                                          <li><a href="#">메타학습 효과</a></li>
+                                      </ul>
+                                  </li>
+                                  <li>
+                                      <a href>학습프로그램</a>
+                                      <ul>
+                                          <li><a href="sub.html">메타인지 학습</a></li>
+                                          <li><a href="#">비주얼씽킹 학습</a></li>
+                                          <li><a href="#">교과서 학습</a></li>
+                                          <li><a href="#">프리미엄 학습</a></li>
+                                          <li><a href="#">글뼈 도서관</a></li>
+                                          <li><a href="#">누리와캠</a></li>
+                                          <li><a href="#">와캠 중학</a></li>
+                                          <li><a href="#">AI 서술형 챗봇</a></li>
+                                          <li><a href="#">서술형첨삭</a></li>
+                                          <li><a href="#">화상수업</a></li>
+                                      </ul>
+                                  </li>
+                                  <li>
+                                      <a href="#">비주얼씽킹 학습</a>
+                                      <ul>
+                                          <li><a href="#">개뼈노트</a></li>
+                                          <li><a href="#">말뼈사전</a></li>
+                                          <li><a href="#">교과서 글뼈읽기</a></li>
+                                          <li><a href="#">학습 체험</a></li>
+                                      </ul>
+                                  </li>
+                                  <li>
+                                      <a href="#">학습자료실</a>
+                                      <ul>
+                                          <li><a href="#">교과 학습</a></li>
+                                          <li><a href="#">개뼈노트</a></li>
+                                          <li><a href="#">시험대비</a></li>
+                                          <li><a href="#">프리미엄 학습</a></li>
+                                      </ul>
+                                  </li>
+                              </ul>
+                          </nav>
+            </div>
+            <!-- 초기화 -->
+        </div>
+        <div id="mainimg_sub">
+            
+                <div class="main_t">
+                    <h1>학습프로그램</h1>
+                    <p>체계적인 학습관리<br>
+                        와이즈캠프만의 맞춤형 학습</p>
+                </div>
+
+        </div>
+        <div id="contents_sub"></div>
+        <div id="footer">
+            <div class="inner">
+                <p class="copyright">주식회사 비상엠러닝 서울시 구로구 디지털로33길 48 대륭포스트타워 7차 14층 대표이사 김태진<br>
+                    대표전화 1588-6563 광고/제휴문의 : wisecamp@wisecamp.com 사이트명 : 와이즈캠프닷컴 사업자 등록번호 214-86-49396<br>
+                    통신판매업 신고번호 2018-서울구로-0560호 학원설립 운영등록번호 : 제 5609호 와이즈캠프닷컴원격학원 (정보조회)신고기간 : 서울특별시 남부교육청<br><br>
+                    COPYRIGHT©(주)비상엠러닝,ALL RIGHTS RESERVED.</p>
+                <div class="f_logo"><img src="img/footer_l.png"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

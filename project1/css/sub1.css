@@ -1,0 +1,164 @@
+/* 공통 */
+*{padding: 0; margin: 0;}
+ul,li{list-style: none;}
+.inner{width: 1200px; margin: 0 auto;}
+body{overflow-x: hidden;}
+a{text-decoration: none; color: #fff;}
+
+/* 헤더 */
+.h_top{width: 100%; height: 129px; position: relative;}
+.logo{width: 140px; position: absolute; margin: 0 auto; left: 0; right: 0; top: 25%;}
+.icon{width: 70px; float: right; padding-top: 50px;}
+#header>.h_top>.inner:after{display: block; content: ""; clear: both;}
+
+.icon_l{width: 30px; float: left;}
+.icon_r{width: 30px; float: right;}
+.icon:after{display: block; content: ""; clear: both;}
+
+
+.h_bottom{height: 67px; background-color: #1e569f; color: #fff; position: relative;}
+.menu{width: 800px; position: absolute; margin: 0 auto; left: 0; right: 0; margin-top: 20px;}
+.menu>li{font-size: 18px; float: left; width: 160px; text-align: center;}
+.menu:after{display: block; content: ""; clear: both;}
+
+.menu_icon{display: none;}
+
+/* 메인 */
+#sub1_mainimg{height: 430px; background-image: url(../img/sub1_main.jpg); background-repeat: no-repeat; background-position: center center; background-size: cover; color: #fff; text-align: center; text-shadow: 0 0 3px  #000;}
+.main_t>h4{font-size: 30px; padding-top: 80px; position: relative;}
+.main_t>h4:after{display: block; content: ""; width:2px; height:35px; background-color: #fff; position: absolute;left: 0;
+    right: 0; margin: 0 auto; top: 130px;}
+.main_t>h1{font-size: 58px; padding-top: 50px; padding-bottom: 60px;}
+.main_t>p{font-size: 25px;}
+
+/* 콘텐츠 */
+
+/* 박스1 */
+.brand{width: 136px; height: 23px; float: right; padding-top: 10px;}
+.brand img{width: 100%;}
+.sub1_box1{height: 550px; text-align: center;}
+.sub1_box1>.inner:after{display: block; content: ""; clear: both;}
+
+.sub1_box1>.inner>h1{color: #fab463; font-size: 50px; padding-top: 190px;}
+.sub1_box1>.inner>p{font-size: 25px; padding-top: 33px;}
+.box2_1_l p:nth-child(3){display: none;}
+
+/* 박스2 */
+.sub1_box2{height: 1200px;}
+.sub1_box2_1,.sub1_box2_2,.sub1_box2_3{height: 396px;}
+.sub1_box2 img{width: 100%;}
+.sub1_box2 h1{font-size: 30px; padding-top: 83px; padding-bottom: 40px;}
+.sub1_box2 p{font-size: 18px; color: #4e4e4e; line-height: 35px;}
+
+.sub1_box2_1{background-image: url(../img/sub1_1_1.png); background-repeat: no-repeat; background-size: cover; background-position: center center;}
+.sub1_box2_1_l{height: 396px; width: 50%;}
+
+
+.sub1_box2_2{background-image: url(../img/sub1_2_1.png); background-repeat: no-repeat; background-size: cover; background-position: center center;}
+
+.box2_2_r{margin-left: 37px; height: 396px; width: 50%; float: right;}
+.sub1_box2_2:after{display: block; content: ""; clear: both;}
+.sub1_box2_2 h1, .sub1_box2_2 p{padding-left: 37px;}
+.box2_2_r p:nth-child(3){display: none;}
+
+
+.sub1_box2_3{background-image: url(../img/sub1_3_1.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;}
+.box2_3_l{height: 396px; width: 50%;}
+.box2_3_l p:nth-child(3){display: none;}
+
+/* 박스3 */
+
+.sub1_box3{height: 1034px;}
+.box3_1,.box3_2,.box3_3{height: 250px; margin: 0 auto; text-align: center;}
+
+.sub1_box3 h2{font-size: 35px;}
+.sub1_box3 h2:after{display: block; content: ""; border-bottom: 1px solid #1e569f; width: 40px; margin: 20px auto;}
+.sub1_box3 p{font-size: 25px; }
+.sub1_box3 span{color: #1e569f;}
+
+.box3_1{padding-top: 190px;}
+
+
+/* 푸터 */
+.f_top{height: 64px; line-height: 64px; background-color: #f2f2f2; border-top: solid 1px #c9c9c9; border-bottom: solid 1px #c9c9c9;;}
+.f_menu{float: left; width: 600px; font-size: 18px; font-weight: bold; color: #505050; text-align: center;}
+.f_menu li{width: 150px; float: left;}
+.f_menu:after{display: block; content: ""; clear: both;}
+
+.f_sns{float: right; width: 180px; padding-top: 10px;}
+.f_sns>li{width: 45px; float: left;}
+.f_sns:after{display: block; content: ""; clear: both;}
+.f_top>.inner:after{display: block; content: ""; clear: both;}
+
+.f_bottom{height: 135px;}
+.f_logo{float: left; padding-top: 35px;}
+.copyright{float: left; padding-top: 35px; padding-left: 77px; font-size: 13px;}
+.copyright>p:nth-child(1){padding-bottom: 17px;}
+.f_bottom:after{display: block; content: ""; clear: both;}
+
+
+@media(max-width:1199px){
+
+    .inner{width: 93%;}
+    .h_top{height: 100px;}
+    .h_bottom{display: none;}
+    .menu_icon{width: 25px; height: 20px; float: left; display: block; padding-top: 42px;}
+    .icon{padding-top: 39px;}
+
+    #sub1_mainimg{height: 252px; background-image: url(../img/sub1_m_main.jpg);}
+    .main_t p{display: none; padding-top: 35px;}
+    .main_t h4{padding-top: 5%;}
+    .main_t>h4:after{top: 110%;}
+
+
+
+    .box2_3_l p:nth-child(2){display: none;}
+    .box2_3_l p:nth-child(3){display: block;}
+
+    .box2_2_r p:nth-child(2){display: none;}
+    .box2_2_r p:nth-child(3){display: block;}
+
+    .box2_1_l p:nth-child(2){display: none;}
+    .box2_1_l p:nth-child(3){display: block;}
+
+    .sub1_box2 h1{padding-top: 10%;}
+
+
+
+    .f_menu{width: 80%; margin: 0 auto; text-align: center; font-size: 15px; margin: 0 auto; float: none;}
+.f_menu li{width: 25%}
+
+.f_top{height: 64px;}
+.f_sns{float: none; margin: 0 auto; padding-top: 23px;}
+
+.f_bottom{height: 267px; position: relative;}
+.f_logo{float: none; left: 47%; top: 80px; position: absolute; padding-top: 0;}
+.copyright{padding: 0; text-align: center; position: absolute; top: 168px; left: 0; right: 0;}
+
+}
+
+@media (max-width:768px){
+    .sub1_box2{height: auto;}
+    .sub1_box2_1{height: 758px; background-image: url(../img/7.jpg);}
+    .sub1_box2_2{height: 758px; background-image: url(../img/8.jpg);}
+    .sub1_box2_3{height: 758px; background-image: url(../img/9.jpg);}
+
+    
+.box2_1_l, .box2_2_r, .box2_3_l{width: 100%; padding-top: 370px;}
+    .box2_3_l p:nth-child(2){display: block;}
+    .box2_3_l p:nth-child(3){display: none;}
+
+    .box2_2_r p:nth-child(2){display: block;}
+    .box2_2_r p:nth-child(3){display: none;}
+    .box2_2 h1, .box2_2 p{padding-left: 0; text-align: left;}
+
+    .box2_1_l p:nth-child(2){display: block;}
+    .box2_1_l p:nth-child(3){display: none;}
+    .sub1_box2 h1 {
+        padding-top: 5%;
+    }
+.sub1_box2 p{font-size: 25px;}
+
+    .f_top{height: 128px;}
+.f_menu>li{width: 50%;}
+}

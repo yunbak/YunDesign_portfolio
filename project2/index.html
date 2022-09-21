@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>와이즈캠프</title>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    mobile_menu();
+});
+
+function mobile_menu(){
+    /* 변수 선언 */
+    var $menu = null;
+    var $left_gnb = null; // 영역 전체
+    var $depth1_wrap = null;
+    var $depth1 = null;
+    var $depth1_btn = null;
+    
+    /* 시작 함수 */
+    function start(){
+        init();
+        init_event();
+    }
+    /* 변수 초기화 함수 */
+    function init(){
+        $menu = $('.menu');
+        $left_gnb = $('.left_gnbWrap'); // 영역 전체
+        $depth1_wrap = $('.left_gnb>li');
+        $depth1 = $depth1_wrap.children('ul');
+        $depth1_btn = $depth1_wrap.children('a');
+    }
+    /* 이벤트 함수 */
+    function init_event(){
+        
+        /* 모바일 메뉴 버튼 클릭했을때 모바일 메뉴영역 나오게 하기 */
+        $menu.click(function(event){
+            event.preventDefault();
+            $left_gnb.addClass('on');
+        });
+        
+        /* x버튼 눌렀을때 모바일 메뉴 닫기 */
+        $('.close').click(function(event){
+            event.preventDefault();
+
+            $left_gnb.removeClass('on');
+            
+            // x버튼 누르면 시간차 약간두고 소메뉴 닫히게 하기
+            setTimeout(function(){
+                $depth1_btn.removeClass('on');
+                $depth1.slideUp();
+            },300)
+        });
+        
+        /* depth1의 각메뉴 클릭시 depth2 나오게 하기 */
+        $depth1_btn.click(function(event){
+            event.preventDefault();
+            var $this = $(this);
+            var $this_ul = $this.siblings('ul');
+
+            var check = $this.hasClass('on');
+            if(check){
+                $this.removeClass('on');
+                $this_ul.stop(true,true).slideUp();
+            }else{
+                $depth1_btn.removeClass('on');
+                $depth1.stop().slideUp();
+                $this.addClass('on');
+                $this_ul.stop(true,true).slideDown();
+            }
+        });
+        
+        /* 디바이스 크기 변경시 모바일 메뉴영역 숨기기 */
+        $(window).resize(function(){
+            $left_gnb.removeClass('on');
+        });
+    }
+    
+    start(); // 시작 호출
+}
+</script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div class="header_l"><img src="img/soobak.jpg"></div>
+            <div class="logo"><img src="img/logo.jpg"></div>
+            <div class="header_r">
+                <div><p>선생님 모집</p></div>
+                <div><p>고객센터</p></div>
+                <!--  -->
+                <div class="menu">
+                    <a href="#">MENU<img src="img/menu.png"></a>
+                  </div>
+                  <nav class="left_gnbWrap">
+                              <a href="#" class="close"><img src="img/wrong1.png"></a>
+                              <ul class="left_gnb">
+                                  <li>
+                                      <a href="sub.html">와이즈캠프 소개</a>
+                                      <ul>
+                                          <li><a href="sub.html">와이즈캠프란?</a></li>
+                                          <li><a href="sub.html">와이즈캠프 특징</a></li>
+                                          <li><a href="sub.html">상품구성</a></li>
+                                          <li><a href="sub.html">학습관리</a></li>
+                                          <li><a href="sub.html">메타학습 효과</a></li>
+                                      </ul>
+                                  </li>
+                                  <li>
+                                      <a href="sub.html">학습프로그램</a>
+                                      <ul>
+                                          <li><a href="sub.html">메타인지 학습</a></li>
+                                          <li><a href="sub.html">비주얼씽킹 학습</a></li>
+                                          <li><a href="sub.html">교과서 학습</a></li>
+                                          <li><a href="sub.html">프리미엄 학습</a></li>
+                                          <li><a href="sub.html">글뼈 도서관</a></li>
+                                          <li><a href="sub.html">누리와캠</a></li>
+                                          <li><a href="sub.html">와캠 중학</a></li>
+                                          <li><a href="sub.html">AI 서술형 챗봇</a></li>
+                                          <li><a href="sub.html">서술형첨삭</a></li>
+                                          <li><a href="sub.html">화상수업</a></li>
+                                      </ul>
+                                  </li>
+                                  <li>
+                                      <a href="sub.html">비주얼씽킹 학습</a>
+                                      <ul>
+                                          <li><a href="sub.html">개뼈노트</a></li>
+                                          <li><a href="sub.html">말뼈사전</a></li>
+                                          <li><a href="sub.html">교과서 글뼈읽기</a></li>
+                                          <li><a href="sub.html">학습 체험</a></li>
+                                      </ul>
+                                  </li>
+                                  <li>
+                                      <a href="sub.html">학습자료실</a>
+                                      <ul>
+                                          <li><a href="sub.html">교과 학습</a></li>
+                                          <li><a href="sub.html">개뼈노트</a></li>
+                                          <li><a href="sub.html">시험대비</a></li>
+                                          <li><a href="sub.html">프리미엄 학습</a></li>
+                                      </ul>
+                                  </li>
+                              </ul>
+                          </nav>
+            </div>
+            <!-- 초기화 -->
+        </div>
+        <div id="mainimg">
+            <div class="main_text">
+                <h2>잘하는 애들은 다</h2>
+                <h1><span>와이즈 캠프</span></h1>
+                <p>상위 0.1% 학생들의 비밀, 업계 유일 메타인지 학습<br>
+                    메타인지 발달의 골든 타임은 초등학생 시기,<br>
+                    더 늦기 전에 시작!</p>
+                <div class="btn"><p>자세히 보기</p></div>
+            </div>
+        </div>
+        <div id="contents">
+
+            <div class="box1">
+                <div class="inner">
+                    <h2>공지사항</h2>
+                    <div class="box1_b">
+                        <div class="box1_1">
+                            <p>마감<br>임박</p>
+                            <div class="box1_t">
+                                <h4>업계 유일!</h4>
+                                <h3>특허 취득 <span>메타인지</span>학습법</h3>
+                            </div>
+                            <div><img src="img/con_1_1.png"></div>
+                        </div>
+                        <div class="box1_2">
+                            <p>진행중</p>
+                            <div class="box1_t">
+                                <h4>우리 아이 처음 공부,</h4>
+                                <h3><span>즐겁게 </span>누리도록!</h3>
+                            </div>
+                            <div><img src="img/con_1_2.png"></div>
+                        </div>
+                        <div class="box1_3">
+                            <p>신 규</p>
+                            <div class="box1_t">
+                                <h4>국민 와이즈캠프</h4>
+                                <h3>카드 <span>캐시백</span>이벤트</h3>
+                            </div>
+                            <div><img src="img/con1_3.png"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box2">
+                <div class="inner">
+                    <h2>와이즈 캠프 학습</h2>
+                    <div class="box2_l">
+                        <div class="box2_l_1"><img src="img/con_2_1.png"></div>
+                        <div class="box2_l_2"><img src="img/con2_2.png"></div>
+                    </div>
+                    <div class="box2_r">
+                        <div class="box2_r_1">
+                            <p>흥미</p>
+                            <div><img src="img/con2_3.png"></div>
+                            <p>마음을 흔드는 <br><span>유별난</span> 재미</p>
+                        </div>
+                        <div class="box2_r_2">
+                            <p>자신감</p>
+                            <div><img src="img/con2_4.png"></div>
+                            <p>생각을 뒤집는 <br><span>특별한</span> 공부</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box3">
+                <div class="inner">
+                    <div class="box3_l">
+                        <div class="box3_t">
+                        <h2>개뼈노트</h2>
+                        <p>개념의 뼈대를 세우는 비주얼<br>
+                            씽킹 학습으로 교과 개념 완성</p></div>
+                        <div class="box3_img"><img src="img/con3_1.png"></div>
+                    </div>
+                    <div class="box3_r">
+                        <div class="box3_t">
+                        <h2>진단 및 검사</h2>
+                        <p>자녀의 8가지 다중지능을 검사하고,<br>
+                            부모와 자녀를 가깝게 만들어 주는<br>
+                            나를 찾는 진단 시스템</p></div>
+                        <div class="box3_img"><img src="img/box3_2.png"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="footer">
+            <div class="inner">
+                <p class="copyright">주식회사 비상엠러닝 서울시 구로구 디지털로33길 48 대륭포스트타워 7차 14층 대표이사 김태진<br>
+                    대표전화 1588-6563 광고/제휴문의 : wisecamp@wisecamp.com 사이트명 : 와이즈캠프닷컴 사업자 등록번호 214-86-49396<br>
+                    통신판매업 신고번호 2018-서울구로-0560호 학원설립 운영등록번호 : 제 5609호 와이즈캠프닷컴원격학원 (정보조회)신고기간 : 서울특별시 남부교육청<br><br>
+                    COPYRIGHT©(주)비상엠러닝,ALL RIGHTS RESERVED.</p>
+                <div class="f_logo"><img src="img/footer_l.png"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

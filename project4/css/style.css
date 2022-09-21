@@ -1,0 +1,166 @@
+/* 공통 */
+ul,li{list-style: none;}
+*{margin: 0; padding: 0;}
+.inner{width: 1190px; margin: 0 auto;}
+.menu>a{text-decoration: none; color: black;}
+
+/* 헤더 */
+#header{height: 87px; line-height: 87px;}
+.logo{width: 180px; float: left; padding-top: 10px;}
+.menu{width: 500px; float: right; font-size: 15px; font-weight: bold;}
+#header>.inner:after{display: block; content: ""; clear: both;}
+
+.menu li{float: left; margin-left: 30px;}
+
+.line{position: relative; width: 60px; height: 50px;
+}
+.line>span{position: absolute;
+    width: 60px;}
+.line:after{width: 63px;
+    height: 1px;
+    background-color: #000;
+    position: absolute;
+    bottom: 0;
+    display: block;
+    content: "";
+    left: 0;
+    right: 0;
+    margin: 0 auto; margin-bottom: -5px;}
+
+/* 메인 */
+#mainimg{height: 758px; background-image: url(../img/mainimg1.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;}
+#mainimg>.inner{width: 1190px; height: 758px; position: relative;}
+
+#mainimg>.inner>.text_box{width: 512px; height: 168px; position: absolute; color: #fff; top: 165px;}
+#mainimg>.inner>.text_box>h4{font-size: 25px; padding-bottom: 40px;}
+#mainimg>.inner>.text_box>h3{font-size: 50px;}
+
+.mainline{height: 18px; width: 312px; position: absolute; top: 473px;}
+
+#sub_mainimg{height: 347px; background-image: url(../img/subimg.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;}
+
+
+/* 컨텐츠 */
+#contents{text-align: center;}
+.box1{height: 962px; position: relative;}
+
+.arrow_left{width: 33px; height: 15px; position: absolute; float: left; bottom: 290px; left: 0;}
+.arrow_right{width: 33px; height: 15px; position: absolute; float: right; bottom: 290px; right: 0;}
+
+.a{width: 17px; height: 33px; float: left; top: 283px; left: 470px; position: absolute;}
+.b{width: 17px; height: 33px; float: right; top: 283px; right: 470px; position: absolute;}
+
+
+
+.box1:after{display: block; content: ""; clear: both;}
+
+.box1>h1{font-size: 93px; padding-top: 150px;}
+.box1>h3{font-size: 34px; position: relative;width: 100%;
+    height: 50px;margin-bottom: 88px;
+}
+.box1>h3>span{    position: absolute;
+    z-index: 2;
+    width: 150px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;}
+.box1>h3:after{    width: 150px;
+    height: 23px;
+    background-color: #cee59f;
+    position: absolute;
+    bottom: 0;
+    display: block;
+    content: "";
+    left: 0;
+    right: 0;
+    margin: 0 auto; border-radius: 30px;}
+
+.box1_text{width: 800px; height: 48px; background-color: #b7b7b7; border-radius: 100px; left: 0; right: 0; margin: 0 auto; line-height: 48px; font-size: 22px; color: #fff; position: absolute;}
+
+.box1_text li{float: left;}
+.box1_text:after{display: block; content: ""; clear: both;}
+
+.box1_text li:nth-child(2),.box1_text li:nth-child(3),.box1_text li:nth-child(4){width: 200px;}
+
+.box1_text li:nth-child(1) {width: 200px; height: 48px; background-color: #f16535; border-radius: 100px;}
+
+.box1_img{width: 930px; left: 0; right: 0; margin: 0 auto; position: absolute; top: 500px;}
+.box1_img div{width: 200px; float: left; padding-bottom: 165px; padding-top: 78px; }
+.box1_img div:nth-child(2),.box1_img div:nth-child(3),.box1_img div:nth-child(4){padding-left: calc(130px/3);}
+
+.box1_img:after{display: block; content: ""; clear: both;}
+
+
+.box2{height: 422px; background-image: url(../img/문화재단_04.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;}
+
+.box2>.inner{width: 1190px; height: 422px; position: relative;}
+.box2>.inner>.text_box{text-align: center; color: #fff; position: absolute; top: 110px;}
+
+.box2>.inner>.text_box>h3{font-size: 30px; color: #fff;}
+
+.box2>.inner>.text_box>h3>span{color: #f16535;}
+.box2>.inner>.text_box>p{padding-top: 38px; padding-bottom: 30px; font-weight: bold;}
+.box2>.inner>.text_box>div{width: 220px; height: 48px; font-size: 19px; line-height: 48px; background-color: #f16535; border-radius: 100px; margin: 0 auto;}
+
+
+
+#sub_contents{height: 703px; border-bottom: 1px solid #e6e6e6;}
+.c_logo{width: 207px; height: 99px; background-image: url(../img/문화재단2_05.png); background-repeat: no-repeat; background-size: cover; background-position: center center; margin: 0 auto; margin-top: 31px;}
+
+.c_menu{width: 1190px; height: 40px; line-height: 40px; color: #fff; margin-top: 23px;}
+.c_menu>li{float: left; width: calc(100%/5 - 3%); height: 40px; text-align: center; background-color: #c5c5c5; border-radius: 100px; font-size: 15px; font-weight: bold;}
+.c_menu>li:nth-child(1){margin-right: calc(15%/4); background-color: #99ca3c; border-radius: 100px;}
+.c_menu>li:nth-child(2),.c_menu>li:nth-child(3),.c_menu>li:nth-child(4){margin-right: calc(15%/4);}
+
+.con_left{width: 50%; height: 363px; float: left; position: relative;}
+.con_right{float: left;}
+.con:after{display: block; content: ""; clear: both;}
+.con{padding-top: 70px;}
+
+.c_img{width: 95%; height: 363px; background-image: url(../img/conimg.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center; position: relative;}
+
+.sub_a{width: 33px; height: 38px; float: left; position: absolute; background-color: rgba(0, 0, 0, .3); top: 153px; left: 0;}
+
+.sub_a>img{margin-top: 6px; margin-left: 10px;}
+
+
+.sub_b{width: 33px; height: 38px; float: right; position: absolute; background-color: rgba(0, 0, 0, .3); top: 153px; right: 0;}
+
+.sub_b>img{margin-top: 6px; margin-left: 10px;}
+
+
+.dot{width: 99px; height: 12px; margin: 0 auto; left: 0; right: 0; margin-top: 19px;}
+
+.con_right{padding-left: 66px; padding-top: 65px;}
+.con_right>h3{font-size: 24px;}
+.con_right>p{font-size: 15px ; padding-top: 11px; padding-bottom: 50px; font-weight: bold;}
+
+.reserve{width: 383px; height: 46px; font-size: 15px; line-height: 46px; color: #fff; font-weight: bold;}
+
+.reserve>div:nth-child(1){float: left; width: 185px; height: 46px; background-color: #99ca3c; border-radius: 100px;}
+.reserve>div:nth-child(2){float: right; width: 185px; height: 46px; background-color: #f16535; border-radius: 100px;}
+.reserve:after{display: block; content: ""; clear: both;}
+
+.reserve>div>p{float: left;}
+.c1{float: left;}
+.reserve>div:after{display: block; content: ""; clear: both;}
+.reserve p{padding-left: 25px;}
+.reserve>div:nth-child(1)>p{padding-right: 53px;}
+.reserve>div:nth-child(2)>p{padding-right: 18px;}
+
+.c_menu>li:nth-child(2):hover{background-color: #99ca3c;}
+.c_menu>li:nth-child(3):hover{background-color: #99ca3c;}
+.c_menu>li:nth-child(4):hover{background-color: #99ca3c;}
+.c_menu>li:nth-child(5):hover{background-color: #99ca3c;}
+
+/* 푸터 */
+#footer{height: 119px; line-height: 119px;}
+.f_logo{width: 180px; float: left; padding-right: 10px;}
+.f_logo>img{vertical-align: middle;}
+#footer>.inner>p{float: left; font-size: 12px; font-weight: bold;}
+.sns{width: 170px; height: 32px; float: right;}
+#footer>.inner:after{display: block; content: ""; clear: both;}
+
+#footer span{color: #7a7a7a;}
+
+.sns div{width: 40px; float: left;}

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sub5</title>
+    <link href="css/all.css" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+      $(document).ready(function () {
+          mobile_menu();
+      });
+
+      function mobile_menu() {
+          /* 변수 선언 */
+          var $menu = null;
+          var $left_gnb = null; // 영역 전체
+          var $depth1_wrap = null;
+          var $depth1 = null;
+          var $depth1_btn = null;
+
+          /* 시작 함수 */
+          function start() {
+              init();
+              init_event();
+          }
+          /* 변수 초기화 함수 */
+          function init() {
+              $menu = $('.menu_icon');
+              $left_gnb = $('.left_gnbWrap'); // 영역 전체
+              $depth1_wrap = $('.left_gnb>li');
+              $depth1 = $depth1_wrap.children('ul');
+              $depth1_btn = $depth1_wrap.children('a');
+          }
+          /* 이벤트 함수 */
+          function init_event() {
+
+              /* 모바일 메뉴 버튼 클릭했을때 모바일 메뉴영역 나오게 하기 */
+              $menu.click(function (event) {
+                  event.preventDefault();
+                  $left_gnb.addClass('on');
+              });
+
+              /* x버튼 눌렀을때 모바일 메뉴 닫기 */
+              $('.close').click(function (event) {
+                  event.preventDefault();
+
+                  $left_gnb.removeClass('on');
+
+                  // x버튼 누르면 시간차 약간두고 소메뉴 닫히게 하기
+                  setTimeout(function () {
+                      $depth1_btn.removeClass('on');
+                      $depth1.slideUp();
+                  }, 300)
+              });
+
+              /* depth1의 각메뉴 클릭시 depth2 나오게 하기 */
+              $depth1_btn.click(function (event) {
+                  event.preventDefault();
+                  var $this = $(this);
+                  var $this_ul = $this.siblings('ul');
+
+                  var check = $this.hasClass('on');
+                  if (check) {
+                      $this.removeClass('on');
+                      $this_ul.stop(true, true).slideUp();
+                  } else {
+                      $depth1_btn.removeClass('on');
+                      $depth1.stop().slideUp();
+                      $this.addClass('on');
+                      $this_ul.stop(true, true).slideDown();
+                  }
+              });
+
+              /* 디바이스 크기 변경시 모바일 메뉴영역 숨기기 */
+              $(window).resize(function () {
+                  $left_gnb.removeClass('on');
+              });
+          }
+
+          start(); // 시작 호출
+      }
+  </script>
+
+  <style type="text/css">
+      /*-------------------모바일 메뉴----------------------*/
+
+      /* 모바일 메뉴 버튼 */
+      .menu_icon {
+          position: absolute;
+          top: 0;
+          left: 5%
+      }
+
+      .menu_icon>a {
+          width: 100%;
+          height: 100%;
+          display: block;
+      }
+
+      a.close {
+          background-color: #fff;
+          width: 100px;
+          height: 100px;
+          position: absolute;
+          left: 0;
+          top: 0;
+          color: #fff;
+          line-height: 100px;
+          text-align: center;
+      }
+
+      a.close>img {
+          width: 20%;
+          top: 40%;
+          left: 30%;
+          position: absolute;
+      }
+
+      .left_gnbWrap {
+          height: 100%;
+          width: 100%;
+          position: fixed;
+          right: -100%;
+          top: 0;
+          padding-top: 100px;
+          z-index: 999;
+          transition: all 0.3s;
+      }
+
+      .left_gnbWrap.on {
+          left: 0;
+      }
+
+      .left_gnb>li {
+          width: 100%;
+      }
+
+      .left_gnb>li>a {
+          font-size: 18px;
+          display: block;
+          text-align: center;
+          line-height: 70px;
+          width: 100%;
+          height: 70px;
+          background-color: #1e56a0;
+          color: #fff;
+      }
+
+      .left_gnb>li>a.on {
+          background-color: #1e56a0;
+      }
+
+      .left_gnb>li>ul {
+          display: none;
+      }
+
+      .left_gnb>li>ul>li>a {
+          display: block;
+          text-align: center;
+          line-height: 70px;
+          width: 100%;
+          height: 70px;
+          background-color: #fff;
+          color: black;
+          font-size: 15px;
+      }
+
+      .left_gnb>li>a>span>img {
+          width: 2%;
+          position: absolute;
+          right: 5%;
+          padding-top: 25px;
+      }
+  </style>
+
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div class="h_top">
+                <div class="inner">
+                    <div class="menu_icon"><img src="img/menu.png"></div>
+                    <nav class="left_gnbWrap">
+                        <a href="#" class="close"><img src="img/X.png"></a>
+                        <ul class="left_gnb">
+                            <li>
+                                <a href="sub1.html">브랜드<span><img src="img/+.png"></span></a>
+                                <ul>
+                                    <li><a href="sub1.html">브랜드 스토리</a></li>
+                                    <li><a href="sub1.html">브랜드 소개</a></li>
+                                    <li><a href="sub1.html">브랜드 히스토리</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="sub2.html">제품<span><img src="img/+.png"></span></a>
+                                <ul>
+                                    <li><a href="sub2.html">제품 전체보기</a></li>
+                                    <li><a href="sub2.html">트루스위트</a></li>
+                                    <li><a href="sub2.html">홈메이드</a></li>
+                                    <li><a href="sub2.html">상쾌환</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="sub3.html">레시피<span><img src="img/+.png"></span></a>
+                                <ul>
+                                    <li><a href="sub3.html">레시피 전체보기</a></li>
+                                    <li><a href="sub3.html">큐원 셀렉션</a></li>
+                                    <li><a href="sub3.html">온라인 쿠킹 세미나</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="sub4.html">홍보센터<span><img src="img/+.png"></span></a>
+                                <ul>
+                                    <li><a href="sub4.html">큐원 tv 광고</a></li>
+                                    <li><a href="sub4.html">큐원 뉴스</a></li>
+                                    <li><a href="sub4.html">투자정보</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="sub5.html">고객서비스<span><img src="img/+.png"></span></a>
+                                <ul>
+                                    <li><a href="sub5.html">자주 묻는 질문</a></li>
+                                    <li><a href="sub5.html">고객 한마디</a></li>
+                                    <li><a href="sub5.html">찾아오시는 길</a></li>
+                                    <li><a href="sub5.html">공장 견학</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="logo"><a href="index.html"><img src="img/logo.png"></a></div>
+                    <div class="icon">
+                        <div class="icon_l"><img src="img/h_1.png"></div>
+                        <div class="icon_r"><img src="img/h_2.jpg"></div>
+                        <!-- 초기화 -->
+                    </div>
+                    <!-- 초기화 -->
+                </div>
+            </div>
+            <div class="h_bottom">
+                <ul class="menu">
+                    <li><a href="sub1.html">브랜드</a></li>
+                    <li><a href="sub2.html">제품</a></li>
+                    <li><a href="sub3.html">레시피</a></li>
+                    <li><a href="sub4.html">홍보센터</a></li>
+                    <li><a href="sub5.html">고객서비스</a></li>
+                    <div class="submenu">
+                        <ul>
+                            <li><a href="sub1.html">브랜드 스토리</a></li>
+                            <li><a href="sub1.html">브랜드 소개</a></li>
+                            <li><a href="sub1.html">브랜드 히스토리</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="sub2.html">제품 전체보기</a></li>
+                            <li><a href="sub2.html">트루스위트</a></li>
+                            <li><a href="sub2.html">홈메이드</a></li>
+                            <li><a href="sub2.html">상쾌환</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="sub3.html">레시피 전체보기</a></li>
+                            <li><a href="sub3.html">큐원 셀렉션</a></li>
+                            <li><a href="sub3.html">온라인 쿠킹 세미나</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="sub4.html">큐원 tv 광고</a></li>
+                            <li><a href="sub4.html">큐원 뉴스</a></li>
+                            <li><a href="sub4.html">투자정보</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="sub5.html">자주 묻는 질문</a></li>
+                            <li><a href="sub5.html">고객 한마디</a></li>
+                            <li><a href="sub5.html">찾아오시는 길</a></li>
+                            <li><a href="sub5.html">공장 견학</a></li>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div id="sub5_mainimg">
+            <div class="animate__animated animate__backInDown">
+                <h4>고객서비스</h4>
+                <h1>자주 묻는 질문</h1>
+                <p>궁금하신 질문의 답변을 알려드립니다.</p>
+            </div>
+        </div>
+        <div id="contents">
+            <div class="inner">
+                <div class="sub5_box1">
+                    <div class="service"><img src="img/service.png"></div>
+                    <div class="box_t">
+                        <h2>FAQ</h2>
+                        <ul class="text5">
+                            <li>제품</li>
+                            <li>기업</li>
+                            <li>기타</li>
+                        </ul>
+                    </div>
+                    <div class="sub5_p">
+                        <p>Q    유통기한이 어떻게 되나요?</p>
+                        <p>Q    수제초콜릿믹스를 전자레인지가 아니라 중탕으로 녹여도 되나요?</p>
+                        <p>Q    홈메이드 제품은 어디서 구입할 수 있나요?</p>
+                        <p>Q    초콜릿만들기세트 제품은 언제 어디서 구입할 수 있나요?</p>
+                        <p>Q    영양쿠키믹스에 보이는 초록색 분말은 무엇인가요?</p>
+                        <p>Q    우리밀호떡, 흑미꿀호떡에는 이스트가 없나요?</p>
+                        <p>Q    집에 오븐이 없어도 큐원홈메이드 제품으로 만들 수 있는 요리나 간식은 없을까요?</p>
+                        <p>Q    국내외 여행지에서 간편하게 만들 수 있는 제품은 뭐가 있을까요?</p>
+                        <p>Q    특별한 날에 정성이 담긴 DIY 홈메이드 선물을 하고 싶어요. 제품 추천 해주세요</p>
+                    </div>
+                    <div class="number">
+                        <img src="img/number.png">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div id="footer">
+            <div class="f_top">
+                <div class="inner">
+                    <ul class="f_menu">
+                        <li>개인정보처리방침</li>
+                        <li>고객상담</li>
+                        <li>찾아오시는길</li>
+                        <li>온라인몰</li>
+                    </ul>
+                    <ul class="f_sns">
+                        <li><img src="img/insta.png"></li>
+                        <li><img src="img/blog.png"></li>
+                        <li><img src="img/face.png"></li>
+                        <li><img src="img/youtube.png"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="f_bottom">
+                <div class="inner">
+                    <div class="f_logo"><img src="img/f_logo.png"></div>
+                    <div class="copyright">
+                        <p>(주) 삼양사 :경기도 성남시 분당구 판교로 295 |<br>
+                            일반문의 : 02-2157-9114 | 제품/상품 관련 문의 : 080-023-3399</p>
+                        <p>COPYRIGHT 2018 SAMYANG CORP, ALL RIGHTS RESERVED</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
